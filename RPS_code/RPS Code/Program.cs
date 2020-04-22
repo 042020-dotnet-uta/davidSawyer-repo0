@@ -11,7 +11,6 @@ namespace rps
             rps.StartGame();
         }
     }
-
     class Game
     {
         //Instantiate players
@@ -38,7 +37,6 @@ namespace rps
             Console.WriteLine("Enter second player name:");
             player2.playerName = Console.ReadLine();
 
-
             Console.WriteLine($"Player1's name is: {player1.playerName}");
             Console.WriteLine($"Player2's name is: {player2.playerName}");
 
@@ -55,12 +53,10 @@ namespace rps
                 Console.WriteLine($"Player {player1.playerName} chose {player1.hand}");
                 Console.WriteLine($"Player {player2.playerName} chose {player2.hand}");
 
-                // compare
+                // compare and incriment round count
                 compare();
-
                 rounds++;
             }
-
             // finally, print the winner, their W-L ratio and their total amount of ties
             if (player1.score > player2.score)
             {
@@ -70,8 +66,6 @@ namespace rps
             {
                 Console.WriteLine($"{player2.playerName} wins {player2.score}-{player1.score} with {ties} ties");
             }
-
-
         }
 
         // Returns a random hand
@@ -92,6 +86,7 @@ namespace rps
             if (player1.hand == player2.hand)
             {
                 ties++;
+                Console.WriteLine($"Tied!");
             }
             else if ((player1.hand == "rock" && player2.hand == "scissors") || (player1.hand == "scissors" && player2.hand == "paper") || (player1.hand == "paper" && player2.hand == "rock"))
             {
