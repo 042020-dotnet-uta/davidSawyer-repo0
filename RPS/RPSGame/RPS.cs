@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace rps
 {
-    class Program
+    class RPS
     {
         static void Main(string[] args)
         {
@@ -51,8 +51,9 @@ namespace rps
                 Console.WriteLine($"Starting Round {rounds}");
                 Console.WriteLine($"Choose rock, paper, or scissors: ");
                 player1.hand = Console.ReadLine();
-                string lowerstr1 = player1.hand.ToLower();
-                if (lowerstr1 == "rock" || lowerstr1 == "paper" || lowerstr1 == "scissors")
+                string lowerHand = player1.hand.ToLower();
+                player1.hand = lowerHand;
+                if (player1.hand == "rock" || player1.hand == "paper" || player1.hand == "scissors")
                 {
                     Console.WriteLine($"Player {player1.playerName} chose {player1.hand}");
                     Console.WriteLine($"Player {player2.playerName} chose {player2.hand}");
@@ -109,7 +110,7 @@ namespace rps
         }
     }
 
-    class Player
+ /*   class Player
     {
         // define properties for player
         // player name
@@ -118,5 +119,5 @@ namespace rps
         public int score;
         // players hand
         public string hand = "EMPTY";
-    }
+    } */
 }

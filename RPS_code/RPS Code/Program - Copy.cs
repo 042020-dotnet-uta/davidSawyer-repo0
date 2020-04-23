@@ -44,26 +44,18 @@ namespace rps
             while (player1.score < 2 && player2.score < 2)
             {
                 // Randomly choose the hand each player drew and store into temp their temp variable
+                player1.hand = ChooseHand();
                 player2.hand = ChooseHand();
 
                 // print out result of the players, which hand they drew, which player won or state that there's a tie and what the
                 // current round is
                 Console.WriteLine($"Starting Round {rounds}");
-                Console.WriteLine($"Choose rock, paper, or scissors: ");
-                player1.hand = Console.ReadLine();
-                string lowerstr1 = player1.hand.ToLower();
-                if (lowerstr1 == "rock" || lowerstr1 == "paper" || lowerstr1 == "scissors")
-                {
-                    Console.WriteLine($"Player {player1.playerName} chose {player1.hand}");
-                    Console.WriteLine($"Player {player2.playerName} chose {player2.hand}");
-                    // compare and incriment round count
-                    compare();
-                    rounds++;
-                }
-                else
-                {
-                    Console.WriteLine("Please choose rock, paper, or scissors.");
-                }
+                Console.WriteLine($"Player {player1.playerName} chose {player1.hand}");
+                Console.WriteLine($"Player {player2.playerName} chose {player2.hand}");
+
+                // compare and incriment round count
+                compare();
+                rounds++;
             }
             // finally, print the winner, their W-L ratio and their total amount of ties
             if (player1.score > player2.score)
