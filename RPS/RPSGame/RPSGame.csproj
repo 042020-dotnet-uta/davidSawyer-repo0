@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Player.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="NewFile1.txt" />
     <None Remove="NewFile2.txt" />
   </ItemGroup>
