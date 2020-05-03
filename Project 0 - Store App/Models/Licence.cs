@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public class Licence
     {
         // Item fields
-        private int _LicenceId;
+        private int _LicenceID;
         [Key]
-        public int LicenceId
+        public int LicenceID
         {
-            get { return _LicenceId; }
-            set { _LicenceId = value; }
+            get { return _LicenceID; }
+            set { _LicenceID = value; }
         }
 
         private string _Company;
@@ -41,11 +38,12 @@ namespace Project_0___Store_App
             get { return _Quantity; }
             set { _Quantity = value; }
         }
-
+        public Location Location { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
         // Add new item modifeied from https://wellsb.com/csharp/beginners/create-menu-csharp-console-application/)
         #region Menu
-        static void AddItem(string[] args)
+    /*    static void AddItem(string[] args)
         {
             bool showMenu = true;
             while (showMenu)
@@ -94,7 +92,7 @@ namespace Project_0___Store_App
         // Change stock of item    
         private static void EditItem()
         {
-            /*                    Item addItem = new Item();
+                                Item addItem = new Item();
                                 Console.Clear();
                                 Console.WriteLine("What's the name of the item?");
                                 addItem.ItemName = Console.ReadLine();
@@ -104,8 +102,8 @@ namespace Project_0___Store_App
                                 addItem.ItemStock = Int32.Parse(Console.ReadLine());
                                 Console.WriteLine($"\r\n{addItem.ItemName} has been added, with a cost of {addItem.ItemCost} and an initial stock of {addItem.ItemStock} ");
                                 Console.Write("\r\nPress Enter to return to Main Menu");
-                                Console.ReadLine();*/
-        } 
+                                Console.ReadLine();
+        } */
         #endregion
     }
  }

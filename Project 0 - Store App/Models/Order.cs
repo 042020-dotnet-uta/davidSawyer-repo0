@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public class Order
     {
         [Key]
-        private int _OrderId;
+        private int _OrderID;
 
-        public int OrderId
+        public int OrderID
         {
-            get { return _OrderId; }
-            set { _OrderId = value; }
+            get { return _OrderID; }
+            set { _OrderID = value; }
         }
 
         // Order details
@@ -34,14 +36,17 @@ namespace Project_0___Store_App
             set { _Price = value; }
         }
 
-        DateTime date = new DateTime();
+       // DateTime date = new DateTime();
         // Parameters from other classes
-   /*     public virtual Location LocationId { get; set; }
-        public virtual Client ClientId { get; set;}
-        public virtual Licence LicenseId { get; set; } */
+        [ForeignKey("Location")]
+        public virtual Location LocationID { get; set; }
+        //[ForeignKey("Client")]
+        //public virtual Client ClientID { get; set;}
+        [ForeignKey("Licence")]
+        public virtual Licence LicenceID { get; set; } 
         #region Menus
         // Create new order
-        private static bool MainMenu()
+      /*  private static bool MainMenu()
         {
             Console.Clear();
             Console.WriteLine("Choose an option:");
@@ -73,7 +78,7 @@ namespace Project_0___Store_App
         }
         private static void EditOrder()
         {
-        } 
+        } */
         #endregion
     }
 }

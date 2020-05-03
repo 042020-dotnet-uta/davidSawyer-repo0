@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public class Location
     {
         // Location fields
-        private int _LocationId;
+        private int _LocationID;
         [Key]
-        public int LocationId
+        public int LocationID
         {
-            get { return _LocationId; }
-            set { _LocationId = value; }
+            get { return _LocationID; }
+            set { _LocationID = value; }
         }
 
         private string _Name;
@@ -24,6 +24,7 @@ namespace Project_0___Store_App
             get { return _Name; }
             set { _Name = value; }
         }
-        List<Licence> licenses = new List<Licence>();
+        List<Licence> Licenses = new List<Licence>();
+        public ICollection<Order> Orders { get; set; }
     }
 }

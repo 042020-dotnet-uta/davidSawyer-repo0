@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public class Client
     {
-		private int _ClientId;
+		private int _ClientID;
 		[Key]
-		public int ClientId
+		public int ClientID
 		{
-			get { return _ClientId; }
-			set { _ClientId = value; }
+			get { return _ClientID; }
+			set { _ClientID = value; }
 		}
 
 		private string _Name;
@@ -39,7 +39,7 @@ namespace Project_0___Store_App
 			get { return _Password; }
 			set { _Password = value; }
 		}
-
+		public ICollection<Order> Orders { get; set; }
 		// Add new customer menu
 
 	}

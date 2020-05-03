@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public class Program
     {

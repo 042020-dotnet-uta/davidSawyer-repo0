@@ -4,7 +4,7 @@ using System.Text;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace Project_0___Store_App
+namespace Project0_App
 {
     public static class Helper
     {

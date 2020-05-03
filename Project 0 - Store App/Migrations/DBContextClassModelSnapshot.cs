@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Project_0___Store_App;
+using Project0_App;
 
-namespace Project_0___Store_App.Migrations
+namespace Project0_App.Migrations
 {
     [DbContext(typeof(DBContextClass))]
     partial class DBContextClassModelSnapshot : ModelSnapshot
@@ -16,7 +16,7 @@ namespace Project_0___Store_App.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3");
 
-            modelBuilder.Entity("Project_0___Store_App.Client", b =>
+            modelBuilder.Entity("Project0_App.Client", b =>
                 {
                     b.Property<int>("ClientId")
                         .ValueGeneratedOnAdd()
@@ -33,10 +33,10 @@ namespace Project_0___Store_App.Migrations
 
                     b.HasKey("ClientId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("Project_0___Store_App.Licence", b =>
+            modelBuilder.Entity("Project0_App.Licence", b =>
                 {
                     b.Property<int>("LicenceId")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace Project_0___Store_App.Migrations
                     b.ToTable("Licences");
                 });
 
-            modelBuilder.Entity("Project_0___Store_App.Location", b =>
+            modelBuilder.Entity("Project0_App.Location", b =>
                 {
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace Project_0___Store_App.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("Project_0___Store_App.Order", b =>
+            modelBuilder.Entity("Project0_App.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
@@ -102,17 +102,17 @@ namespace Project_0___Store_App.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Project_0___Store_App.Order", b =>
+            modelBuilder.Entity("Project0_App.Order", b =>
                 {
-                    b.HasOne("Project_0___Store_App.Client", "ClientId")
+                    b.HasOne("Project0_App.Client", "ClientId")
                         .WithMany()
                         .HasForeignKey("ClientId1");
 
-                    b.HasOne("Project_0___Store_App.Licence", "LicenseId")
+                    b.HasOne("Project0_App.Licence", "LicenseId")
                         .WithMany()
                         .HasForeignKey("LicenseIdLicenceId");
 
-                    b.HasOne("Project_0___Store_App.Location", "LocationId")
+                    b.HasOne("Project0_App.Location", "LocationId")
                         .WithMany()
                         .HasForeignKey("LocationId1");
                 });
