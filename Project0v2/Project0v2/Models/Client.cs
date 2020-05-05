@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
-namespace Project0_App
+namespace Project0v2.Models
 {
     public class Client
     {
 		private int _ClientID;
-		[Key]
+
 		public int ClientID
 		{
 			get { return _ClientID; }
@@ -32,9 +31,9 @@ namespace Project0_App
 			set { _LName = value; }
 		}
 
-		private int _UserName;
+		private string _UserName;
 
-		public int UserName
+		public string UserName
 		{
 			get { return _UserName; }
 			set { _UserName = value; }
@@ -48,7 +47,14 @@ namespace Project0_App
 			set { _Password = value; }
 		}
 		public virtual ICollection<Order> Orders { get; set; }
-		// Add new customer menu
-
+		// add a new customer
+		/*public static AddCustomer() { }
+		public AddCustomer(string Fname, string Lname, string UserName, string Password) 
+		{
+			this.FName = FName;
+			this.LName = LName;
+			this.UserName = UserName;
+			this.Password = Password;
+		}*/
 	}
 }

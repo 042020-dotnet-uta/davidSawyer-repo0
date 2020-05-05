@@ -39,7 +39,7 @@ namespace Project0_App
             set { _Quantity = value; }
         }
         public Location Location { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         // Add new item modifeied from https://wellsb.com/csharp/beginners/create-menu-csharp-console-application/)
         #region Menu

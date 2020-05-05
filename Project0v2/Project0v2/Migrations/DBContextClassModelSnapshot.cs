@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Project0_App;
+using Project0v2;
 
-namespace Project0_App.Migrations
+namespace Project0v2.Migrations
 {
-    [DbContext(typeof(DatabaseContextClass))]
+    [DbContext(typeof(DBContextClass))]
     partial class DBContextClassModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -16,13 +16,16 @@ namespace Project0_App.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3");
 
-            modelBuilder.Entity("Project0_App.Client", b =>
+            modelBuilder.Entity("Project0v2.Models.Client", b =>
                 {
-                    b.Property<int>("ClientId")
+                    b.Property<int>("ClientID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
@@ -31,58 +34,63 @@ namespace Project0_App.Migrations
                     b.Property<int>("UserName")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ClientId");
+                    b.HasKey("ClientID");
 
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("Project0_App.Licence", b =>
+            modelBuilder.Entity("Project0v2.Models.Licence", b =>
                 {
-                    b.Property<int>("LicenceId")
+                    b.Property<int>("LicenceID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Company")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("LocationID")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("LicenceId");
+                    b.HasKey("LicenceID");
+
+                    b.HasIndex("LocationID");
 
                     b.ToTable("Licences");
                 });
 
-            modelBuilder.Entity("Project0_App.Location", b =>
+            modelBuilder.Entity("Project0v2.Models.Location", b =>
                 {
-                    b.Property<int>("LocationId")
+                    b.Property<int>("LocationID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("LocationId");
+                    b.HasKey("LocationID");
 
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("Project0_App.Order", b =>
+            modelBuilder.Entity("Project0v2.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ClientId1")
+                    b.Property<int?>("ClientID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("LicenseIdLicenceId")
+                    b.Property<int?>("LicenceID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("LocationId1")
+                    b.Property<int?>("LocationID")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Price")
@@ -91,30 +99,37 @@ namespace Project0_App.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("OrderID");
 
-                    b.HasIndex("ClientId1");
+                    b.HasIndex("ClientID");
 
-                    b.HasIndex("LicenseIdLicenceId");
+                    b.HasIndex("LicenceID");
 
-                    b.HasIndex("LocationId1");
+                    b.HasIndex("LocationID");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Project0_App.Order", b =>
+            modelBuilder.Entity("Project0v2.Models.Licence", b =>
                 {
-                    b.HasOne("Project0_App.Client", "ClientId")
+                    b.HasOne("Project0v2.Models.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("ClientId1");
+                        .HasForeignKey("LocationID");
+                });
 
-                    b.HasOne("Project0_App.Licence", "LicenseId")
-                        .WithMany()
-                        .HasForeignKey("LicenseIdLicenceId");
+            modelBuilder.Entity("Project0v2.Models.Order", b =>
+                {
+                    b.HasOne("Project0v2.Models.Client", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientID");
 
-                    b.HasOne("Project0_App.Location", "LocationId")
-                        .WithMany()
-                        .HasForeignKey("LocationId1");
+                    b.HasOne("Project0v2.Models.Licence", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("LicenceID");
+
+                    b.HasOne("Project0v2.Models.Location", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("LocationID");
                 });
 #pragma warning restore 612, 618
         }
