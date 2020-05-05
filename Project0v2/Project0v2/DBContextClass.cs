@@ -16,7 +16,7 @@ namespace Project0v2
         {
             if(!options.IsConfigured) options.UseSqlite("Data Source=projectZero.db");
         }
-            
+        public DBContextClass() { }
         public DBContextClass(DbContextOptions<DBContextClass> Options) : base(Options) { }
     }
 }

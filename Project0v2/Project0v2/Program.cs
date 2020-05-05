@@ -8,6 +8,16 @@ namespace Project0v2
     {
         static void Main(string[] args)
         {
+            using (var db = new DBContextClass())
+            {
+                var clients = new Client();
+                clients.FName = "John";
+                clients.LName = "Smith";
+                clients.UserName = "jsmith";
+                clients.Password = "asd123";
+                db.Add(clients);
+                db.SaveChanges();
+            }
             while (true)
             {
                 Console.Clear();

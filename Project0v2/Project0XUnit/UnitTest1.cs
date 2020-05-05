@@ -15,11 +15,12 @@ namespace Project0XUnit
         {
             var SqLite = new SqliteConnection("Filename=:memory:");
             var DBOptions = new DbContextOptionsBuilder<DBContextClass>().UseSqlite(SqLite).Options;
+            SqLite.Open();
             using (var db = new DBContextClass(DBOptions))
             {
                 db.Database.Migrate();
                 var clients = new Client();
-                clients.FName = "Honh";
+                clients.FName = "John";
                 clients.LName = "Smith";
                 clients.UserName = "jsmith";
                 clients.Password = "asd123";
@@ -29,11 +30,11 @@ namespace Project0XUnit
             using (var db = new DBContextClass(DBOptions))
             {
                 var clients = db.Clients
-                    .Where(b => b.FName == "Hohn")
+                    .Where(b => b.FName == "John")
                     .OrderBy(b => b.ClientID)
                     .ToList()
                     .First();
-                Assert.Equal("Hohn",clients.FName);
+                Assert.Equal("John",clients.FName);
             }
 
         }
