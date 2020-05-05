@@ -41,5 +41,9 @@ namespace Project0v2.Models
         public Location Location { get; set; }
         List<Licence> Licenses = new List<Licence>();
         public virtual ICollection<Order> Orders { get; set; }
+        public override String ToString()
+        {
+            return $"{LicenceID}) {Company} \tPrice: {Price} \tQuantity: {Quantity}";
+        }
     }
 }

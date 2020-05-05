@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 18.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "JoinTest", "JoinTest\JoinTest.ssmssqlproj", "{160B4F24-C075-4DBB-9092-F7715A8A3474}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{160B4F24-C075-4DBB-9092-F7715A8A3474}.Default|Default.ActiveCfg = Default
+		{A6EC18F9-1594-4373-BDC8-8DCF3849A42C}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52B235AA-A8F2-4C01-89C3-16C1C0729FCA}
+	EndGlobalSection
+EndGlobal

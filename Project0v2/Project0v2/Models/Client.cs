@@ -47,14 +47,5 @@ namespace Project0v2.Models
 			set { _Password = value; }
 		}
 		public virtual ICollection<Order> Orders { get; set; }
-		// add a new customer
-		/*public static AddCustomer() { }
-		public AddCustomer(string Fname, string Lname, string UserName, string Password) 
-		{
-			this.FName = FName;
-			this.LName = LName;
-			this.UserName = UserName;
-			this.Password = Password;
-		}*/
 	}
 }
