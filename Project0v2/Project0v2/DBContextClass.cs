@@ -13,6 +13,10 @@ namespace Project0v2
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=projectZero.db");
+        {
+            if(!options.IsConfigured) options.UseSqlite("Data Source=projectZero.db");
+        }
+            
+        public DBContextClass(DbContextOptions<DBContextClass> Options) : base(Options) { }
     }
 }
