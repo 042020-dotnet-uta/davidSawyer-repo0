@@ -36,6 +36,8 @@ namespace Project0v2
                     case "4":
                         break;
                     default:
+                        Console.WriteLine("Please select one of the listed options.");
+                        Console.ReadLine();
                         continue;
                 }
                 break;
@@ -54,7 +56,7 @@ namespace Project0v2
                     {
                         case "1":
                             //Call the order creation
-                            NewOrder();
+                            //NewOrder();
                             continue;
                         case "2":
                             //Pull orders from DB
@@ -65,6 +67,8 @@ namespace Project0v2
                         case "4":
                             break;
                         default:
+                            Console.WriteLine("Please select one of the listed options.");
+                            Console.ReadLine();
                             continue;
                     }
                     break;
@@ -83,14 +87,16 @@ namespace Project0v2
                     switch (Console.ReadLine())
                     {
                         case "1":
-                            //use store history
+                            //view store history
                             continue;
                         case "2":
-                            //use client history
+                            //view client history
                             continue;
                         case "3":
                             break;
                         default:
+                            Console.WriteLine("Please select one of the listed options.");
+                            Console.ReadLine();
                             continue;
                     }
                     break;
@@ -118,6 +124,8 @@ namespace Project0v2
                         case "3":
                             break;
                         default:
+                            Console.WriteLine("Please select one of the listed options.");
+                            Console.ReadLine();
                             continue;
                     }
                     break;
@@ -140,6 +148,8 @@ namespace Project0v2
                         case "2":
                             break;
                         default:
+                            Console.WriteLine("Please select one of the listed options.");
+                            Console.ReadLine();
                             continue;
                     }
                     break;
@@ -254,9 +264,41 @@ namespace Project0v2
                 {
                     Console.WriteLine(value);
                 }
+                Console.WriteLine("Press enter to return to the menu.");
                 Console.ReadLine();      
             }
-        } 
+        }
+        private static void StoreHist()
+        {
+            using (var db = new DBContextClass())
+            {
+
+                Console.WriteLine("We have locations in \n1) New York\n2) Austin\n3) Detroit.\nType the number of the location you would like to view:");
+                var orders = db.Orders
+                    .FromSqlRaw($"Select * from Orders where LocationID = {Int32.Parse(Console.ReadLine())};")
+                    .ToList();
+                foreach (Order value in orders)
+                {
+                    Console.WriteLine(value);
+                }
+                Console.WriteLine("Press enter to return to the menu.");
+                Console.ReadLine();
+            }
+        }
+        private static void ClientHist()
+        {
+            using (var db = new DBContextClass())
+            {
+                Console.WriteLine("First Name:");
+                var clients = db.Clients
+                    .Where(b => b.FName == Console.ReadLine())
+                    .OrderBy(b => b.ClientID)
+                    .ToList()
+                    .First();
+                Console.WriteLine($"{clients.FName} {clients.LName}");
+                Console.ReadLine();
+            }
+        }
     }
 }
 // Persistent data to DB; no hardcoding. - Complete

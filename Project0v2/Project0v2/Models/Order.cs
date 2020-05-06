@@ -43,5 +43,9 @@ namespace Project0v2.Models
             this.Customer = Customer;
             this.Location = Location;
         }
+        public override String ToString()
+        {
+            return $"{OrderID}) {Customer} at {Location} \tPrice: {Price} \tQuantity: {Quantity} - ordered {OrderDate}";
+        }
     }
 }

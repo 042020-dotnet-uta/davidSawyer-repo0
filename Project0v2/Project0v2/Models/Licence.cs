@@ -43,7 +43,7 @@ namespace Project0v2.Models
         public virtual ICollection<Order> Orders { get; set; }
         public override String ToString()
         {
-            return $"{LicenceID}) {Company} \tPrice: {Price} \tQuantity: {Quantity}";
+            return $"{LicenceID}) {Company} \tPrice: {Price}000 \tQuantity: {Quantity}";
         }
     }
 }
